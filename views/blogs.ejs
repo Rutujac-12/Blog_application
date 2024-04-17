@@ -1,0 +1,182 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <style>
+        body {
+            margin: 20px auto; /* Centering the content horizontally */
+            max-width: 800px; /* Limiting max width of the body */
+        }
+        .blog {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            position: relative; /* Add this to position the delete button */
+        }
+
+        .blog img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            max-height: 150px; /* Adjust the max height as needed */
+        }
+
+        .create-blog-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: green; /* Adjust the background color as needed */
+            color: #fff; /* Text color */
+            text-decoration: none; /* Remove underline */
+            border-radius: 5px;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .create-blog-button:hover {
+            background-color: green; /* Change color on hover */
+        }
+
+        .delete-blog-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .delete-blog-button:hover {
+            background-color: #c82333; /* Change color on hover */
+        }
+
+        .delete-blog-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .delete-blog-button:hover {
+            background-color: #c82333; /* Change color on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>All Blogs</h1>
+    <% users.forEach(blog => { %>
+        <div class="blog">
+            <form action="/Delete/<%= blog._id %>" method="POST"> 
+                <button type="submit" class="create-blog-button" method="delete">Delete</a></button>
+                
+            </form>
+          
+
+            <h2><%= blog.title %></h2>
+            <img src="<%= blog.imageURL %>" alt="<%= users.title %>">
+            <p><strong>Author:</strong> <%= blog.description %></p>
+        </div>
+    <% }) %>
+    <h2>Create a New Blog</h2>
+    <a href="/create-blog" class="create-blog-button">Create New Blog</a>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <style>
+        body {
+            margin: 20px auto; /* Centering the content horizontally */
+            max-width: 800px; /* Limiting max width of the body */
+            font-family: Arial, sans-serif; /* Setting a fallback font */
+            background-color: #f0f0f0; /* Light background color */
+            color: #333; /* Default text color */
+        }
+        
+        h1 {
+            text-align: center; /* Center-aligning the heading */
+            margin-bottom: 30px; /* Adding some space below the heading */
+        }
+
+        .blog {
+            border: 1px solid #ddd; /* Lighter border color */
+            border-radius: 8px; /* Slightly rounded corners */
+            padding: 20px; /* Increased padding */
+            margin-bottom: 30px; /* Increased margin between blog posts */
+            background-color: #fff; /* White background color */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+            position: relative; /* Relative positioning for delete button */
+        }
+
+        .blog img {
+            max-width: 100%; /* Ensuring images don't overflow */
+            height: auto; /* Keeping aspect ratio */
+            display: block; /* Removing default inline display */
+            margin: 0 auto; /* Center-aligning images */
+            max-height: 200px; /* Increasing max height for images */
+            border-radius: 5px; /* Rounded corners for images */
+            margin-bottom: 15px; /* Adding space below images */
+        }
+
+        .blog h2 {
+            margin-bottom: 10px; /* Adding space below blog titles */
+            color: #007bff; /* Blue color for titles */
+        }
+
+        .blog p {
+            margin-bottom: 20px; /* Adding space below descriptions */
+        }
+
+        .create-blog-button, .delete-blog-button {
+            padding: 10px 20px; /* Padding for buttons */
+            background-color: #28a745; /* Green color for buttons */
+            color: #fff; /* White text color */
+            border: none; /* Removing border */
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* Removing underline */
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        .create-blog-button:hover, .delete-blog-button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        .delete-blog-button {
+            position: absolute; /* Absolute positioning for delete button */
+            top: 10px; /* Adjusting top position */
+            right: 10px; /* Adjusting right position */
+        }
+    </style>
+</head>
+<body>
+    <h1>All Blogs</h1>
+    <% users.forEach(blog => { %>
+        <div class="blog">
+            <h2><%= blog.title %></h2>
+            <img src="<%= blog.imageURL %>" alt="<%= users.title %>">
+            <p><strong>Author:</strong> <%= blog.description %></p>
+            <form action="/Delete/<%= blog._id %>" method="POST"> 
+                <button type="submit" class="delete-blog-button" method="delete">Delete</button>
+            </form>
+        </div>
+    <% }) %>
+    <h2>Create a New Blog</h2>
+    <a href="/create-blog" class="create-blog-button">Create New Blog</a>
+</body>
+</html>
